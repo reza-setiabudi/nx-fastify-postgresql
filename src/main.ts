@@ -93,9 +93,6 @@ const getStatus = (req, res) => {
 
 const addNews = (req, res) => {
   const { title, body, topic_ids, status_id } = req.body;
-  console.log(req.body)
-  
-  console.log("masuk 1")
   client.query("INSERT INTO article (title, body, status_id) VALUES ($1, $2, $3)",
   [title, body, status_id],
   (error, result) => {
@@ -115,7 +112,6 @@ const addNews = (req, res) => {
               if (error){
                 throw error;
               } else {
-                console.log("masuk 7")
                 res.status(200).send(result.rows);
               }
             })
@@ -125,8 +121,6 @@ const addNews = (req, res) => {
     }
   })
 }
-          
-
 
 const getNews = (req, res) => {
   client.query("SELECT * FROM news", (error, result) => {
